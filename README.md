@@ -41,23 +41,24 @@
 
 ```text
 .
-├── step1_set_type_base.py  # 未分類の結合スクリプト
-├── step2_make_add_data.py  # Evernoteエクスポートファイル読込スクリプト
-├── step3_merge_data.py     # ファイル結合スクリプト
-├── step4_make_js.py        # JavaScript作成スクリプト
-├── bayesian_filter.py      # ベイジアンフィルタモジュール
-├── type_predict.py         # ベイジアンフィルタによる学習モデル
-├── type_predict            # 学習済みモデルデータ
-├── Evernoteエクスポート/    # .enexファイルを格納するディレクトリ
+├── step1_set_type_base.py       # 未分類の結合スクリプト
+├── step2_make_add_data.py       # Evernoteエクスポートファイル読込スクリプト
+├── step2-plus_make_add_data.py  # Evernoteエクスポートファイル読込スクリプト（新たに追加した分のみ結合する）
+├── step3_merge_data.py          # ファイル結合スクリプト
+├── step4_make_js_data.py        # JavaScript作成スクリプト
+├── bayesian_filter.py           # ベイジアンフィルタモジュール
+├── type_predict.py              # ベイジアンフィルタによる学習モデル
+├── type_predict                 # 学習済みモデルデータ
+├── Evernoteエクスポート/         # .enexファイルを格納するディレクトリ
 │   └── *.enex
 ├── EvernoteToHtml/
-│   └── data.js             # html表示用JavaScript（最終出力ファイル）
-└── data/                   # 出力先ディレクトリ (自動作成されます)
-    ├── data.csv            # 「未分類」を含むオリジナルデータ
-    ├── 未分類.xlsx          # 「未分類」に対応する分類データ
-    ├── data_base.csv       # data.csvに「未分類」を置き換えたデータ
-    ├── data_add.csv        # Evernoteエクスポートファイルから抽出したデータ
-    └── data_new.csv        # オリジナルデータと追加データの結合データ
+│   └── data.js                  # html表示用JavaScript（最終出力ファイル）
+└── data/                        # 出力先ディレクトリ (自動作成されます)
+    ├── data.csv                 # 「未分類」を含むオリジナルデータ
+    ├── 未分類.xlsx               # 「未分類」に対応する分類データ
+    ├── data_base.csv            # data.csvに「未分類」を置き換えたデータ
+    ├── data_add.csv             # Evernoteエクスポートファイルから抽出したデータ
+    └── data_new.csv             # オリジナルデータと追加データの結合データ
  ```
 
 ## 使い方
@@ -69,12 +70,17 @@
 2. スクリプトを実行します。
    - step2_make_add_data.pyを実行します。
    - step3_merge_data.pyを実行します。
-   - step4_make_js.pyを実行します。
+   - step4_make_js_data.pyを実行します。
+3. 新たに追加した.enexファイル分のみ結合する場合、以下のスクリプトを実行します。
+   - step2-plus_make_add_data.pyを実行します。
+   - step3_merge_data.pyを実行します。
+   - step4_make_js_data.pyを実行します。
 
 ```bash
 python step2_make_add_data.py
+python step2-plus_make_add_data.py
 python step3_merge_data.py
-python step4_make_js.py
+python step4_make_js_data.py
 ```
 
 3. 処理が完了すると、`EvernoteToHtml/data.js` に結果が保存されます。
